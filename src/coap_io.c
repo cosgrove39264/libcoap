@@ -1369,6 +1369,7 @@ coap_write(coap_context_t *ctx,
   return (unsigned int)((timeout * 1000 + COAP_TICKS_PER_SECOND - 1) / COAP_TICKS_PER_SECOND);
 }
 
+#ifndef RIOT_VERSION
 int
 coap_run_once(coap_context_t *ctx, unsigned timeout_ms) {
 #if COAP_CONSTRAINED_STACK
@@ -1456,6 +1457,7 @@ coap_run_once(coap_context_t *ctx, unsigned timeout_ms) {
 
   return (int)(((now - before) * 1000) / COAP_TICKS_PER_SECOND);
 }
+#endif /* RIOT_VERSION */
 
 #else
 int coap_run_once(coap_context_t *ctx, unsigned int timeout_ms) {
