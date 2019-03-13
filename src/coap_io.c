@@ -949,6 +949,7 @@ coap_packet_get_memmapped(coap_packet_t *packet, unsigned char **address, size_t
   *length = packet->length;
 }
 
+#ifndef RIOT_VERSION
 ssize_t
 coap_network_read(coap_socket_t *sock, coap_packet_t *packet) {
   ssize_t len = -1;
@@ -1194,6 +1195,7 @@ error:
 #endif
   return -1;
 }
+#endif /* RIOT_VERSION */
 
 #if !defined(WITH_CONTIKI)
 
